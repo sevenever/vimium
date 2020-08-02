@@ -279,6 +279,8 @@ Scroller =
     unless CoreScroller.wouldNotInitiateScroll()
       element = findScrollableElement activatedElement, direction, amount, factor
       elementAmount = factor * getDimension element, direction, amount
+      if (direction == "y" and Math.abs(elementAmount) > 3 * 100)
+        elementAmount -= getSign(elementAmount) * 100
       CoreScroller.scroll element, direction, elementAmount, continuous
 
   scrollTo: (direction, pos) ->
