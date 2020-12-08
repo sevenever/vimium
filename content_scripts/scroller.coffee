@@ -281,6 +281,14 @@ Scroller =
       elementAmount = factor * getDimension element, direction, amount
       if direction == "y" and Math.abs(elementAmount) > 3 * 100
         elementAmount -= getSign(elementAmount) * 100
+        eoc = element.querySelector(":scope > #vimium-end-of-content")
+        if !eoc
+          eoc = document.createElement("div")
+          eoc.id = "vimium-end-of-content"
+          eoc.style = "height: 200vh; width = 100%"
+          eoc.style.backgroundColor = "purple"
+          element.appendChild(eoc)
+
       CoreScroller.scroll element, direction, elementAmount, continuous
 
   scrollTo: (direction, pos) ->
